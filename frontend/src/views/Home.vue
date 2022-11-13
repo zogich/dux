@@ -1,6 +1,13 @@
 <template>
-    <n-space>
-      DUX
+    <n-space class="home-page"
+            vertical
+            justify="center"
+            align="center">
+      <h1>DUX City Guide</h1>
+      <h2>Лучший путеводитель по Владивостоку</h2>
+      <n-button size="large" dashed type="primary">
+      Начать
+      </n-button>
     </n-space>
 </template>
 
@@ -19,3 +26,17 @@ export default class Home extends Vue {
   theme = darkTheme
 }
 </script>
+<style scoped>
+  h1{
+    margin: 0;
+    font-size: 80px;
+    font-weight: 500;
+  }
+  h2{
+    font-size: 24px;
+    margin: 0;
+  }
+  .home-page{
+    height: 100%;
+  }
+</style>
