@@ -5,8 +5,8 @@
             align="center">
       <h1>DUX City Guide</h1>
       <h2>Лучший путеводитель по Владивостоку</h2>
-      <n-button size="large" dashed type="primary">
-      Начать
+      <n-button @click="start" size="large" dashed type="primary">
+        Начать
       </n-button>
     </n-space>
 </template>
@@ -15,7 +15,6 @@
 import { Options, Vue } from 'vue-class-component';
 import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
 import {NGradientText, NConfigProvider, NSpace, NCard, NButton} from 'naive-ui';
-import { darkTheme } from 'naive-ui';
 
 @Options({
   components: {
@@ -23,7 +22,9 @@ import { darkTheme } from 'naive-ui';
   },
 })
 export default class Home extends Vue {
-  theme = darkTheme
+    start(){
+    this.$router.push('/menu');
+  }
 }
 </script>
 <style scoped>
