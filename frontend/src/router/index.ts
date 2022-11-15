@@ -15,7 +15,7 @@ const routes: Array<RouteRecordRaw> = [
     component: Menu
   },
   {
-    path: '/place-list:placeType',
+    path: '/place-list/:placeType',
     name: 'PlaceList',
     component: PlaceList,
     props: (route) => {

@@ -1,6 +1,6 @@
 <template>
     <n-space class="layout" vertical align="start">
-      <h1>{{this.placeType}}</h1>
+      <h1>{{this.placeType.title}}</h1>
     <n-input v-model:value="value" type="text" placeholder="Найти место" />
   </n-space>
 </template>
@@ -8,13 +8,15 @@
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
 import { NButton, NCard, NConfigProvider, NGradientText, NSpace, NInput } from "naive-ui";
-import PlaceModel from '@/models/PlaceModel'
+import PlaceTypeModel from '@/models/PlaceTypeModel'
 
 @Options({
   components: {
     NGradientText, NConfigProvider, NSpace, NCard, NButton, NInput
   },
-  props: {placeType: String}
+  props: {
+    placeType: String
+  }
 })
 
 export default class PlaceList extends Vue{
