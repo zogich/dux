@@ -1,7 +1,6 @@
 
 export default interface PlaceModel {
   id: number;
-  title: string;
-  type: string;
+  name: string;
   description?: string;
 }
