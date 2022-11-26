@@ -1,7 +1,14 @@
 from django.shortcuts import render
+from rest_framework import viewsets
+from places.serializers import PlaceTypeSerializer, PlaceSerializer
+from places.models import PlaceTypes, Place
 
-# Create your views here.
+
+class PlaceTypesViewSet(viewsets.ModelViewSet):
+    serializer_class = PlaceTypeSerializer
+    queryset = PlaceTypes.objects.all()
 
 
-def index(request, *args, **kwargs):
-    return render(request, 'index.html')
+class PlaceViewSet(viewsets.ModelViewSet):
+    serializer_class = PlaceSerializer
+    queryset = Place.objects.all()

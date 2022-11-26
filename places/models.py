@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib import admin
 
 
 class PlaceTypes(models.Model):
@@ -16,3 +17,7 @@ class Place(models.Model):
 
     def __str__(self):
         return self.name
+
+
+admin.site.register(PlaceTypes)
+admin.site.register(Place)
