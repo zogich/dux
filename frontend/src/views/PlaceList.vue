@@ -1,6 +1,6 @@
 <template>
     <n-space class="layout" vertical align="start">
-      <h1>{{this.placeType.title}}</h1>
+      <h1>{{this.placeType}}</h1>
     <n-input v-model:value="value" type="text" placeholder="Найти место" />
   </n-space>
 </template>

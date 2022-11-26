@@ -2,12 +2,12 @@
   <div>
     <h1>Выберите вид досуга: </h1>
     <n-space justify="center">
-      <menu-card-component :place_type="'attraction'" title="Достопримечательности"/>
-      <menu-card-component :place_type="'museums'" title="Музеи"/>
-      <menu-card-component :place_type="'theaters'" title="Театры"/>
-      <menu-card-component :place_type="'bars'" title="Бары"/>
-      <menu-card-component :place_type="'restaurants'" title="Рестораны"/>
-      <menu-card-component :place_type="'parks'" title="Парки"/>
+      <menu-card-component :place_type="'attraction'" :title="'Достопримечательности'"/>
+      <menu-card-component :place_type="'museums'" :title="'Музеи'"/>
+      <menu-card-component :place_type="'theaters'" :title="'Театры'"/>
+      <menu-card-component :place_type="'bars'" :title="'Бары'"/>
+      <menu-card-component :place_type="'restaurants'" :title="'Рестораны'"/>
+      <menu-card-component :place_type="'parks'" :title="'Парки'"/>
     </n-space>
   </div>
 </template>

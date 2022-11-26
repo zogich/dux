@@ -4,5 +4,4 @@ export default interface PlaceModel {
   title: string;
   type: string;
   description?: string;
-
 }
