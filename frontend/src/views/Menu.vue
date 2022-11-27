@@ -2,7 +2,8 @@
   <div>
     <h1>Выберите вид досуга: </h1>
     <n-space justify="center">
-      <menu-card-component v-for="type in this.place_types" :key="type.id" :place_type=type.name :title=type.name />
+      <menu-card-component v-for="type in this.place_types" :key="type.id"
+                           :placeTypeId=type.id />
     </n-space>
   </div>
 </template>
@@ -14,6 +15,7 @@ import MenuCardComponent from "@/components/MenuCardComponent.vue"
 import placeModule from "@/store/modules/place"
 import placeModel from "@/models/PlaceTypeModel"
 
+
 @Options({
   components: {
     NGradientText, NConfigProvider, NSpace, NCard, NButton, MenuCardComponent
@@ -23,7 +25,7 @@ export default class Menu extends Vue{
   place_types: placeModel[] = []
 
   async created(){
-    placeModule.fetchPlaceTypes()
+    await placeModule.fetchPlaceTypes()
     this.place_types = placeModule.placeTypes;
   }
 }

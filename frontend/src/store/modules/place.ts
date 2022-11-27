@@ -9,9 +9,8 @@ class PlaceModule extends VuexModule {
   currentPlaces:placeModel[] = [];
 
   @Action
-  fetchPlaceTypes(){
-    api.get('/place_types/').then(response =>{
-      console.log(response.data)
+  async fetchPlaceTypes(){
+    await api.get('/place_types/').then(response =>{
       this.setPlaceTypes(response.data)
     })
   }
@@ -22,8 +21,8 @@ class PlaceModule extends VuexModule {
   }
 
   @Action
-  fetchPlaceTypeByType(type: string){
-    return this.placeTypes.filter(place_type=> place_type.name===type)
+  fetchPlaceTypeById(type: string){
+    return this.placeTypes.filter(place_type => place_type.name===type)
   }
 
   @Action
