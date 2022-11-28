@@ -1,5 +1,5 @@
 <template>
-  <router-link :to="{name: 'PlaceList', params:{placeType: this.place_type}}">
+  <router-link :to="{name: 'PlaceList', params:{placeTypeId: this.place_type_id}}">
     <n-card>{{this.title}}</n-card>
   </router-link>
 </template>
@@ -13,13 +13,12 @@ import { NButton, NCard, NConfigProvider, NGradientText, NSpace } from "naive-ui
     NGradientText, NConfigProvider, NSpace, NCard, NButton
   },
   props: {
-    place_type: String,
+    place_type_id: String,
     title: String
   }
 })
 
 export default class MenuCardComponent extends Vue{
-
 }
 </script>
 

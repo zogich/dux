@@ -15,12 +15,12 @@ const routes: Array<RouteRecordRaw> = [
     component: Menu
   },
   {
-    path: '/place-list/:placeType',
+    path: '/place-list/:placeTypeId',
     name: 'PlaceList',
     component: PlaceList,
     props: (route) => {
-      const placeType = route.params.placeType;
-      return { placeType, ...route.params };
+      const placeTypeId = route.params.placeTypeId;
+      return { placeTypeId, ...route.params };
     },
   }
 ]

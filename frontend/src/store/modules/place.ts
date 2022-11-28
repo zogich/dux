@@ -12,7 +12,14 @@ class PlaceModule extends VuexModule {
   async fetchPlaceTypes(){
     await api.get('/place_types/').then(response =>{
       this.setPlaceTypes(response.data)
+    }).catch(error=>{
+      console.log('ERROR', error)
     })
+  }
+
+  @Action
+  async fetchPlaceTypeById(id: number){
+    console.log('PLACE TYPES!' ,this.placeTypes)
   }
 
   @Mutation
@@ -21,12 +28,7 @@ class PlaceModule extends VuexModule {
   }
 
   @Action
-  fetchPlaceTypeById(type: string){
-    return this.placeTypes.filter(place_type => place_type.name===type)
-  }
-
-  @Action
-  fetchPlaceByType(type_id: number){
+  fetchPlaceByType(type: string){
     return this
   }
 }
