@@ -2,7 +2,6 @@
   <div>
     {{this.place.name}}
   </div>
-  <YandexMap :setting="this.settings"></YandexMap>
 </template>
 
 
@@ -12,11 +11,10 @@ import { Vue, Options } from "vue-class-component";
 import { Prop } from 'vue-property-decorator';
 import placeModel from '@/models/PlaceModel';
 import api from '@/store/api';
-import { yandexMap } from 'vue-yandex-maps'
 
 @Options({
   components: {
-    yandexMap
+
   }
 })
 export default class PlaceComponent extends Vue{
