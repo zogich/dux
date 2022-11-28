@@ -17,20 +17,11 @@ class PlaceModule extends VuexModule {
     })
   }
 
-  @Action
-  async fetchPlaceTypeById(id: number){
-    console.log('PLACE TYPES!' ,this.placeTypes)
-  }
-
   @Mutation
   setPlaceTypes(data:placeTypeModel[]){
     this.placeTypes = data;
   }
 
-  @Action
-  fetchPlaceByType(type: string){
-    return this
-  }
 }
 
 import store from "@/store/index";
