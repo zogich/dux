@@ -1,6 +1,13 @@
 <template>
   <div>
     {{this.place.name}}
+    <GMapMap
+      :center="{lat: 43.10944713099635,  lng: 131.89621359759158}"
+      :zoom="100"
+      map-type-id="terrain"
+      style="width: 400px; height: 400px">
+    </GMapMap>
+
   </div>
 </template>
 
@@ -13,9 +20,6 @@ import placeModel from '@/models/PlaceModel';
 import api from '@/store/api';
 
 @Options({
-  components: {
-
-  }
 })
 export default class PlaceComponent extends Vue{
     @Prop({required: true}) placeId!: number;
@@ -29,9 +33,12 @@ export default class PlaceComponent extends Vue{
     }
 
     async created(){
-      await api.get('/place/', {params: {place_id: this.placeId}}).then(response =>{
-            this.place = response.data;
-          })
+      await api.get('/place/', {params: {id: this.placeId}}).then(response =>{
+            console.log('RESPONSE PLACE:', response)
+            this.place = response.data[0];
+          }).catch(error=>{
+            console.log(error);
+      })
     }
 }
 </script>

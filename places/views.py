@@ -13,7 +13,7 @@ class PlaceTypesViewSet(viewsets.ModelViewSet):
 class PlaceViewSet(viewsets.ModelViewSet):
     serializer_class = PlaceSerializer
     filter_backends = [django_filters.rest_framework.DjangoFilterBackend]
-    filterset_fields = ['place_type', ]
+    filterset_fields = ['place_type', 'id']
     queryset = Place.objects.all()
 
     def filter_queryset(self, queryset):
