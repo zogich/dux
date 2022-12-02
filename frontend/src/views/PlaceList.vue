@@ -1,14 +1,16 @@
 <template>
-    <n-space class="layout" vertical align="start">
-      <n-input v-model:value="value" type="text" placeholder="Найти место" />
-      <n-list v-for="place in this.place_list" :key="place.id">
-        <router-link :to="{name: 'PlaceView', params: {placeId: place.id} }">
-        <n-list-item>
-          {{place.name}}
-        </n-list-item>
-        </router-link>
-      </n-list>
-    </n-space>
+  <div class="doc">
+    <n-card>
+        <n-input v-model:value="value" type="text" placeholder="Найти место" />
+        <n-list v-for="place in this.place_list" :key="place.id">
+          <router-link :to="{name: 'PlaceView', params: {placeId: place.id} }">
+            <n-button class="buttons">
+              {{place.name}}
+            </n-button>
+          </router-link>
+        </n-list>
+    </n-card>
+  </div>
 </template>
 
 <script lang="ts">
@@ -40,9 +42,17 @@ export default class PlaceList extends Vue{
 </script>
 
 <style scoped>
-  .layout{
-    padding: 40px;
+  .doc{
+    width: 40%;
+    padding: 16px 16px 24px;
   }
+
+  .buttons{
+    overflow: hidden;
+    width: 100%;
+    margin-top: 10px;
+  }
+
   h1{
     margin: 0;
   }
@@ -53,4 +63,5 @@ export default class PlaceList extends Vue{
   a:visited{
     color: inherit;
   }
+
 </style>
