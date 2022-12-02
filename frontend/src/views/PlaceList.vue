@@ -1,7 +1,8 @@
 <template>
   <div class="doc">
     <n-card>
-        <n-input v-model:value="value" type="text" placeholder="Найти место" />
+      <n-input v-model:value="value" type="text" placeholder="Найти место" />
+      <n-scrollbar style="max-height: 300px; text-align: left;">
         <n-list v-for="place in this.place_list" :key="place.id">
           <router-link :to="{name: 'PlaceView', params: {placeId: place.id} }">
             <n-button class="buttons">
@@ -9,20 +10,21 @@
             </n-button>
           </router-link>
         </n-list>
+      </n-scrollbar>
     </n-card>
   </div>
 </template>
 
 <script lang="ts">
 import { Vue, Options } from "vue-class-component";
-import { NButton, NCard, NConfigProvider, NGradientText, NSpace, NInput, NList } from "naive-ui";
+import { NButton, NCard, NConfigProvider, NGradientText, NSpace, NInput, NList, NScrollbar} from "naive-ui";
 import placeModel from '@/models/PlaceModel'
 import { Prop } from 'vue-property-decorator';
 import api from '@/store/api'
 
 @Options({
   components: {
-    NGradientText, NConfigProvider, NSpace, NCard, NButton, NInput, NList,
+    NGradientText, NConfigProvider, NSpace, NCard, NButton, NInput, NList, NScrollbar,
   },
 })
 
@@ -47,7 +49,11 @@ export default class PlaceList extends Vue{
     padding: 16px 16px 24px;
   }
 
+
   .buttons{
+    text-align: left;
+    max-width: 95%;
+    justify-content: left;
     overflow: hidden;
     width: 100%;
     margin-top: 10px;

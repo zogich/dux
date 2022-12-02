@@ -1,19 +1,24 @@
 <template>
-  <div>
+  <div class="doc">
+  <n-card>
     {{this.place.name}}
+    <div class="cont">
+    <n-carousel show-arrow class="carousel">
+      <img v-for="image in this.images" :key="image.id" alt="image" :src=image.image_url>
+    </n-carousel>
     <GMapMap
       :center="{lat: this.place.latitude,  lng: this.place.longitude}"
       :zoom="50"
       map-type-id="terrain"
-      style="width: 400px; height: 400px">
+      style="width: 60vw; position:relative;">
       <GMapMarker
       :position="{lat: this.place.latitude, lng: this.place.longitude}"
     />
     </GMapMap>
-    <n-carousel show-arrow>
-      <img v-for="image in this.images" :key="image.id" alt="image" :src=image.image_url>
-    </n-carousel>
-  </div>
+      </div>
+
+  </n-card>
+    </div>
 </template>
 
 
@@ -24,11 +29,11 @@ import { Prop } from 'vue-property-decorator';
 import placeModel from '@/models/PlaceModel';
 import imageModel from '@/models/ImageModel';
 import api from '@/store/api';
-import {NCarousel} from "naive-ui";
+import {NCard, NCarousel} from "naive-ui";
 
 @Options({
   components: {
-    NCarousel,
+    NCarousel, NCard,
   },
 })
 export default class PlaceComponent extends Vue{
@@ -53,5 +58,16 @@ export default class PlaceComponent extends Vue{
 </script>
 
 <style scoped>
+
+  .carousel{width: 30%}
+  .cont{
+    max-height: 900px;
+    justify-content: center;
+    display:flex;
+    width: 100%;
+  }
+  .doc{
+      padding: 16px 16px 24px;
+    }
 
 </style>
