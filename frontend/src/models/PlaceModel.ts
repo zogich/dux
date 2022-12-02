@@ -5,4 +5,6 @@ export default interface PlaceModel extends BaseModel {
   name: string;
   description?: string;
   type: number;
+  latitude: number;
+  longitude: number;
 }

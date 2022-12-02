@@ -16,11 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from places.views import PlaceTypesViewSet, PlaceViewSet
+from places.views import PlaceTypesViewSet, PlaceViewSet, ImageViewSet
 
 router = DefaultRouter()
 router.register(r'place_types', PlaceTypesViewSet, basename='place_types')
 router.register(r'place', PlaceViewSet, basename='place')
+router.register(r'image', ImageViewSet, basename='image')
 
 urlpatterns = [
     path('admin/', admin.site.urls),

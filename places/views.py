@@ -1,8 +1,8 @@
 from django.shortcuts import render
 import django_filters.rest_framework
 from rest_framework import viewsets
-from places.serializers import PlaceTypeSerializer, PlaceSerializer
-from places.models import PlaceTypes, Place
+from places.serializers import PlaceTypeSerializer, PlaceSerializer, ImageSerializer
+from places.models import PlaceTypes, Place, Image
 
 
 class PlaceTypesViewSet(viewsets.ModelViewSet):
@@ -15,6 +15,16 @@ class PlaceViewSet(viewsets.ModelViewSet):
     filter_backends = [django_filters.rest_framework.DjangoFilterBackend]
     filterset_fields = ['place_type', 'id']
     queryset = Place.objects.all()
+
+    def filter_queryset(self, queryset):
+        return super().filter_queryset(queryset)
+
+
+class ImageViewSet(viewsets.ModelViewSet):
+    serializer_class = ImageSerializer
+    filter_backends = [django_filters.rest_framework.DjangoFilterBackend]
+    filterset_field = ['place', ]
+    queryset = Image.objects.all()
 
     def filter_queryset(self, queryset):
         return super().filter_queryset(queryset)
