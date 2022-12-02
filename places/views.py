@@ -23,7 +23,7 @@ class PlaceViewSet(viewsets.ModelViewSet):
 class ImageViewSet(viewsets.ModelViewSet):
     serializer_class = ImageSerializer
     filter_backends = [django_filters.rest_framework.DjangoFilterBackend]
-    filterset_field = ['place', ]
+    filterset_fields = ['place']
     queryset = Image.objects.all()
 
     def filter_queryset(self, queryset):
