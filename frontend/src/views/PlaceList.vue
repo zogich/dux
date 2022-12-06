@@ -1,8 +1,9 @@
 <template>
+  <div class="main-cont">
   <div class="doc">
     <n-card>
       <n-input v-model:value="value" type="text" placeholder="Найти место" />
-      <n-scrollbar style="max-height: 300px; text-align: left;">
+      <n-scrollbar style="max-height: 550px; text-align: left; min-height: 550px;">
         <n-list v-for="place in this.place_list" :key="place.id">
           <router-link :to="{name: 'PlaceView', params: {placeId: place.id} }">
             <n-button class="buttons">
@@ -13,6 +14,12 @@
       </n-scrollbar>
     </n-card>
   </div>
+  <div class="right-cont">
+    <n-card class="right-cont">
+      RAPERS<br>
+    </n-card>
+  </div>
+    </div>
 </template>
 
 <script lang="ts">
@@ -45,12 +52,21 @@ export default class PlaceList extends Vue{
 
 <style scoped>
   .doc{
+    display: flex;
+    justify-content: left;
     width: 40%;
     padding: 16px 16px 24px;
   }
 
+  .right-cont{
+    min-width: 60%;
+    min-height: 625px;
+    max-height: 625px;
+     padding: 16px 16px 24px;
+  }
 
   .buttons{
+    border-radius: 0 10px 10px 0;
     text-align: left;
     max-width: 95%;
     justify-content: left;
@@ -69,5 +85,7 @@ export default class PlaceList extends Vue{
   a:visited{
     color: inherit;
   }
-
+ .main-cont{
+   display: flex;
+ }
 </style>
