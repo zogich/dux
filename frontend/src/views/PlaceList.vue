@@ -2,7 +2,6 @@
   <div class="main-cont">
   <div class="doc">
     <n-card>
-      asdasdasd
       <n-input v-model:value="value" type="text" placeholder="Найти место" />
       <n-scrollbar style="max-height: 550px; text-align: left; min-height: 550px;">
         <n-list v-for="place in this.place_list" :key="place.id">
@@ -16,8 +15,7 @@
     </n-card>
   </div>
   <div class="right-cont">
-    <n-card class="right-cont">
-    </n-card>
+    <img src="@/assets/park.svg" alt="image">
   </div>
     </div>
 </template>
