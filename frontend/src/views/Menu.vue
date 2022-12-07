@@ -1,5 +1,6 @@
 <template>
   <div>
+
     <h1>Выберите вид досуга: </h1>
     <n-space justify="center">
       <menu-card-component v-for="type in this.place_types" :key="type.id"

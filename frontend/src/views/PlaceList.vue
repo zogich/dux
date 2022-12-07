@@ -2,6 +2,7 @@
   <div class="main-cont">
   <div class="doc">
     <n-card>
+      asdasdasd
       <n-input v-model:value="value" type="text" placeholder="Найти место" />
       <n-scrollbar style="max-height: 550px; text-align: left; min-height: 550px;">
         <n-list v-for="place in this.place_list" :key="place.id">
@@ -16,7 +17,6 @@
   </div>
   <div class="right-cont">
     <n-card class="right-cont">
-      RAPERS<br>
     </n-card>
   </div>
     </div>
@@ -53,7 +53,6 @@ export default class PlaceList extends Vue{
 <style scoped>
   .doc{
     display: flex;
-    justify-content: left;
     width: 40%;
     padding: 16px 16px 24px;
   }

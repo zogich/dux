@@ -25,8 +25,8 @@ export default class MenuCardComponent extends Vue{
 <style scoped>
   .n-card:hover{
     transition: 1s;
-    border-color: #5ACEA7FF;
-    color: #5ACEA7FF;
+    border-color: #8ACBECFF;
+    color: #8ACBECFF;
   }
   a{
     text-decoration: none;

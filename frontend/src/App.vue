@@ -1,20 +1,29 @@
 <template>
-  <n-config-provider :theme="this.theme">
+  <n-config-provider :theme="this.theme" :theme-overrides="themeOverrides">
     <n-layout>
     <n-layout-header bordered>
-      <n-space justify="end">
+      <n-space justify="space-between">
+        <div class="top-logo-container">
+          <n-gradient-text type="info">DUX</n-gradient-text>
+
+          <n-button text><router-link to="/">Home</router-link></n-button>
+          <n-button text><router-link to="/menu">Menu</router-link></n-button>
+        </div>
+
+
+        <div class="button-theme-container">
         <n-button @click="changeThemeToDark">
           Dark
         </n-button>
         <n-button @click="this.theme = null">
           Light
         </n-button>
+        </div>
       </n-space>
     </n-layout-header>
-
-      <n-layout-content>
+    <n-layout-content>
         <router-view/>
-      </n-layout-content>
+    </n-layout-content>
       <n-layout-footer bordered>
         <n-space vertical style="gap: 3px" justify='space-evenly' align="start">
 
@@ -36,17 +45,42 @@
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
 import {
-  darkTheme, NConfigProvider, NGradientText, NButton, NSpace, NCard, NLayout, NLayoutContent, NLayoutHeader, NLayoutFooter
+  darkTheme, NConfigProvider, NGradientText, NButton, NSpace, NCard, NLayout, NLayoutContent, NLayoutHeader,
+  NLayoutFooter, NInput
 } from "naive-ui";
-import { useThemeVars } from 'naive-ui'
+import type { MenuOption } from 'naive-ui'
+import { RouterLink } from 'vue-router';
+
 @Options({
   components: {
-    NGradientText, NConfigProvider, NButton, NSpace, NCard, NLayout, NLayoutContent, NLayoutHeader, NLayoutFooter
+    NGradientText, NConfigProvider,
+    NButton, NSpace, NCard, NLayout, NLayoutContent, NLayoutHeader,
+    NLayoutFooter,  NInput
   },
 })
 export default class App extends Vue {
   theme = darkTheme
-  themeVars = useThemeVars;
+
+  themeOverrides = {
+    common: {
+      primaryColorHover: '#8ACBECFF'
+    },
+
+    // ...
+  }
+
+  private isSelected(param: string) {
+    // eslint-disable-next-line no-prototype-builtins
+    const selected = this.$route.params.hasOwnProperty(param) && !!this.$route.params[param];
+    return {
+      selected,
+      id: selected ? Number(this.$route.params[param]) : NaN,
+    };
+  }
+
+  get isSelectedPlaceType(){
+    return this.isSelected('placeTypeId');
+  }
 
   changeThemeToDark(){
     this.theme = darkTheme;
@@ -65,6 +99,20 @@ export default class App extends Vue {
   color #2c3e50
 </style>
 <style scoped lang="stylus">
+.top-logo-container > .n-gradient-text{
+  font-size 32px
+}
+.top-logo-container > .n-button{
+  margin-left 90px
+}
+.top-logo-container
+  display flex
+  justify-content center
+  align-items center
+
+.button-theme-container > .n-button
+  margin 2px
+
 .n-layout-header
     padding 12px
     height 63px
