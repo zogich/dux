@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-xonbe_1g^=kxk%bu76u0)qr@7!f2gyqq^913lr62y(3^#dha8=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['http://zogich.pythonanywhere.com/']
 
 
 # Application definition
@@ -78,7 +78,6 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:8080",
     'http://zogich.pythonanywhere.com/'
 ]
-
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
