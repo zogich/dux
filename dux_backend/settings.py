@@ -76,6 +76,7 @@ WSGI_APPLICATION = 'dux_backend.wsgi.application'
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:8080",
+    'http://zogich.pythonanywhere.com/'
 ]
 
 # Database
