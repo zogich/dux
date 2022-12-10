@@ -5,6 +5,10 @@ from places.serializers import PlaceTypeSerializer, PlaceSerializer, ImageSerial
 from places.models import PlaceTypes, Place, Image
 
 
+def index(request):
+    return render(request, 'index.html')
+
+
 class PlaceTypesViewSet(viewsets.ModelViewSet):
     serializer_class = PlaceTypeSerializer
     queryset = PlaceTypes.objects.all()

@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
-
+import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-xonbe_1g^=kxk%bu76u0)qr@7!f2gyqq^913lr62y(3^#dha8=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['zogich.pythonanywhere.com']
+ALLOWED_HOSTS = ['zogich.pythonanywhere.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -59,7 +59,9 @@ ROOT_URLCONF = 'dux_backend.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates'],
+        'DIRS': [
+            'templates',
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -76,7 +78,7 @@ WSGI_APPLICATION = 'dux_backend.wsgi.application'
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:8080",
-    'http://zogich.pythonanywhere.com/'
+    'http://zogich.pythonanywhere.com'
 ]
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
@@ -108,8 +110,10 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 STATIC_URL = '/static/'
-STATIC_ROOT = 'static'
-STATICFILES_DIRS = ['frontend/dist', ]
+STATIC_ROOT = 'var/static/'
+STATICFILES_DIRS = [
+      BASE_DIR.joinpath('static'),
+  ]
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
 
 MEDIA_URL = '/media/'
