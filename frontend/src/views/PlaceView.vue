@@ -41,7 +41,7 @@ export default class PlaceComponent extends Vue{
     place: placeModel = {id: -1, name:'', description:'', type: 0, latitude: 0, longitude: 0}
     images: imageModel[] = [];
     async created(){
-      await api.get('/place/', {params: {id: this.placeId}}).then(response =>{
+      await api.get('api/place/', {params: {id: this.placeId}}).then(response =>{
             this.place = response.data[0];
           }).catch(error=>{
             console.log(error);

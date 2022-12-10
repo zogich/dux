@@ -10,7 +10,7 @@ class PlaceModule extends VuexModule {
 
   @Action
   async fetchPlaceTypes(){
-    await api.get('/place_types/').then(response =>{
+    await api.get('api/place_types/').then(response =>{
       this.setPlaceTypes(response.data)
     }).catch(error=>{
       console.log('ERROR', error)
