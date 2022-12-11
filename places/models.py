@@ -25,9 +25,6 @@ class Image(models.Model):
     place = models.ForeignKey(Place, on_delete=models.CASCADE)
     image_url = models.TextField()
 
-    def __str__(self):
-        return self.name
-
 
 admin.site.register(PlaceTypes)
 admin.site.register(Place)
