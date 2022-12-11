@@ -39,9 +39,9 @@ export default class PlaceList extends Vue{
   place_list: placeModel[] = []
 
   async created(){
-    await api.get('api/place/', { params: { place_type: this.placeTypeId } }).then(response =>{
+    await api.get('/api/place/', { params: { place_type: this.placeTypeId } }).then(response =>{
         this.place_list = response.data as placeModel[];
-        console.log('PLACE LIST', this.place_list);
+        console.log(api.defaults.baseURL)
     })
   }
 

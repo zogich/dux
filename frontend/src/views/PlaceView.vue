@@ -52,13 +52,13 @@ export default class PlaceComponent extends Vue{
 
     async created(){
       this.handleResizeWindow();
-      await api.get('api/place/', {params: {id: this.placeId}}).then(response =>{
+      await api.get('/api/place/', {params: {id: this.placeId}}).then(response =>{
             this.place = response.data[0];
           }).catch(error=>{
             console.log(error);
       });
 
-      await api.get('api/image/', {params: {place: this.placeId}}).then(response =>{
+      await api.get('/api/image/', {params: {place: this.placeId}}).then(response =>{
         console.log(response.data)
         this.images = response.data
       }).catch(error=>{
