@@ -1,14 +1,8 @@
 <template>
-  <n-grid cols="xs:1 s:2 m:2 l:2 xl:2 2xl:2" responsive="screen" :x-gap="12" :y-gap="8" class="grid">
-    <n-grid-item>
-      <n-card>
-      <n-carousel show-arrow class="carousel">
-        <img v-for="image in this.images" :key="image.id" alt="image" :src=image.image_url>
-      </n-carousel>
-      </n-card>
-    </n-grid-item>
-    <n-grid-item>
-      <GMapMap
+  <div class="map-layout">
+    <n-button @click="show_drawer" class="info-button"/>
+  <GMapMap
+      ref="myMapRef"
       :center="{lat: this.place.latitude,  lng: this.place.longitude}"
       :zoom="50"
       map-type-id="terrain"
@@ -18,8 +12,15 @@
       :position="{lat: this.place.latitude, lng: this.place.longitude}"
     />
     </GMapMap>
-    </n-grid-item>
-  </n-grid>
+
+    <n-drawer v-model:show="active" :width="502" :placement="'left'">
+    <n-drawer-content title="Stoner">
+      <n-carousel show-arrow class="carousel">
+        <img v-for="image in this.images" :key="image.id" alt="image" :src=image.image_url>
+      </n-carousel>
+    </n-drawer-content>
+    </n-drawer>
+  </div>
 </template>
 
 
@@ -30,17 +31,19 @@ import { Prop } from 'vue-property-decorator';
 import placeModel from '@/models/PlaceModel';
 import imageModel from '@/models/ImageModel';
 import api from '@/store/api';
-import {NCard, NCarousel, NGrid, NGridItem} from "naive-ui";
+import {NCard, NCarousel, NGrid, NGridItem, NButton, NDrawer} from "naive-ui";
 
 @Options({
   components: {
-    NCarousel, NCard, NGrid, NGridItem
+    NCarousel, NCard, NGrid, NGridItem, NButton, NDrawer
   },
 })
 export default class PlaceComponent extends Vue{
     @Prop({required: true}) placeId!: number;
     place: placeModel = {id: -1, name:'', description:'', type: 0, latitude: 0, longitude: 0}
     images: imageModel[] = [];
+    active = false
+
     async created(){
       await api.get('api/place/', {params: {id: this.placeId}}).then(response =>{
             this.place = response.data[0];
@@ -48,27 +51,30 @@ export default class PlaceComponent extends Vue{
             console.log(error);
       });
 
-      await api.get('/image', {params: {place: this.placeId}}).then(response =>{
+      await api.get('api/image/', {params: {place: this.placeId}}).then(response =>{
+        console.log(response.data)
         this.images = response.data
-        console.log(response)
       }).catch(error=>{
         console.log(error);
       })
+    }
+
+    show_drawer(){
+      this.active = true;
     }
 }
 </script>
 
 <style scoped>
-
-.grid{
-  padding: 10px;
+.map{
   height: 90vh;
 }
-.carousel{
-  height: 80vh;
+.map-layout{
+  text-align: left;
 }
-.map{
-  height: 80vh;
+.info-button{
+  position: absolute;
+  z-index: 100;
+  margin-top: 40vh
 }
-
 </style>
