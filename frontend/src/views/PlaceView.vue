@@ -1,6 +1,8 @@
 <template>
   <div v-bind:style='{textAlign: this.styleObject.map_layout_text_align}'>
-    <n-button @click="show_drawer" v-bind:style="{marginTop: this.styleObject.drawer_button_margin_top}" class="info-button"/>
+    <n-button @click="show_drawer" v-bind:style="{marginTop: this.styleObject.drawer_button_margin_top}" class="info-button">
+      Описание
+    </n-button>
   <GMapMap
       ref="myMapRef"
       :center="{lat: this.place.latitude,  lng: this.place.longitude}"
@@ -16,8 +18,18 @@
     <n-drawer v-model:show="active" :width="'35vw'" :height="'70vh'" :placement="this.styleObject.drawer_placement">
     <n-drawer-content title="Stoner">
       <n-carousel show-arrow class="carousel">
-        <img v-for="image in this.images" :key="image.id" alt="image" :src=image.image_url>
+        <img class="img-cont" v-for="image in this.images" :key="image.id" alt="image" :src=image.image_url>
       </n-carousel>
+      <div class="main-cont-wind">
+        <div class="cont-name">
+          {{place.name}}
+        </div>
+        <div class="cont-draw">
+          <n-scrollbar style="max-height: 35vh; min-height: 35vh;">
+          {{place.description}}
+          </n-scrollbar>
+        </div>
+      </div>
     </n-drawer-content>
     </n-drawer>
   </div>
@@ -31,11 +43,11 @@ import { Prop } from 'vue-property-decorator';
 import placeModel from '@/models/PlaceModel';
 import imageModel from '@/models/ImageModel';
 import api from '@/store/api';
-import {NCard, NCarousel, NButton, NDrawer} from "naive-ui";
+import {NCard, NCarousel, NButton, NDrawer, NScrollbar} from "naive-ui";
 
 @Options({
   components: {
-    NCarousel, NCard, NButton, NDrawer
+    NCarousel, NCard, NButton, NDrawer,NScrollbar
   },
 })
 export default class PlaceComponent extends Vue{
@@ -93,11 +105,43 @@ export default class PlaceComponent extends Vue{
 </script>
 
 <style scoped>
+
+.main-cont-wind{
+  margin-left: 25px;
+  margin-right: 25px;
+}
+
+.cont-name{
+  font-size: 200%;
+  margin-top: 25px;
+  padding-bottom: 10px;
+  border-bottom: black solid;
+}
+
+.cont-draw{
+  padding-bottom: 10px;
+  font-size: 150%;
+  margin-top: 25px;
+  border-bottom: black solid;
+}
+
 .map{
   height: 90vh;
 }
 
+.carousel{
+  max-height: 40vh;
+}
+
+.img-cont{
+  height: 100%;
+  width: 100%;
+  background-size: contain;
+}
+
 .info-button{
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 0px 25px 25px 0px;
   position: absolute;
   z-index: 100;
 }
