@@ -1,8 +1,9 @@
 <template>
-  <div class="main-cont">
-  <div class="doc">
+  <div style="padding:15px">
+  <n-grid class="central_grid" cols="2" :x-gap="15" :y-gap="15" item-responsive>
+  <n-grid-item span="0:2 800:1">
     <n-card>
-      <n-input v-model:value="value" type="text" placeholder="Найти место" />
+      <n-input type="text" placeholder="Найти место" />
       <n-scrollbar style="max-height: 550px; text-align: left; min-height: 550px;">
         <n-list v-for="place in this.place_list" :key="place.id">
           <router-link :to="{name: 'PlaceView', params: {placeId: place.id} }">
@@ -13,16 +14,18 @@
         </n-list>
       </n-scrollbar>
     </n-card>
-  </div>
-  <div class="right-cont">
+  </n-grid-item>
+  <n-grid-item span="0 800:1">
     <img src="@/assets/park.svg" alt="image">
+  </n-grid-item>
+  </n-grid>
   </div>
-    </div>
 </template>
 
 <script lang="ts">
 import { Vue, Options } from "vue-class-component";
-import { NButton, NCard, NConfigProvider, NGradientText, NSpace, NInput, NList, NScrollbar} from "naive-ui";
+import { NButton, NCard, NConfigProvider, NGradientText, NSpace, NInput, NList,
+  NGrid, NGridItem, NScrollbar} from "naive-ui";
 import placeModel from '@/models/PlaceModel'
 import { Prop } from 'vue-property-decorator';
 import api from '@/store/api'
@@ -30,6 +33,7 @@ import api from '@/store/api'
 @Options({
   components: {
     NGradientText, NConfigProvider, NSpace, NCard, NButton, NInput, NList, NScrollbar,
+    NGrid, NGridItem,
   },
 })
 
@@ -49,26 +53,13 @@ export default class PlaceList extends Vue{
 </script>
 
 <style scoped>
-  .doc{
-    display: flex;
-    width: 40%;
-    padding: 16px 16px 24px;
-  }
-
-  .right-cont{
-    min-width: 60%;
-    min-height: 625px;
-    max-height: 625px;
-     padding: 16px 16px 24px;
-  }
 
   .buttons{
-    border-radius: 0 10px 10px 0;
     text-align: left;
-    max-width: 95%;
     justify-content: left;
     overflow: hidden;
     width: 100%;
+    height: 60px;
     margin-top: 10px;
   }
 
@@ -82,7 +73,4 @@ export default class PlaceList extends Vue{
   a:visited{
     color: inherit;
   }
- .main-cont{
-   display: flex;
- }
 </style>

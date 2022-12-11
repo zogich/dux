@@ -31,11 +31,11 @@ import { Prop } from 'vue-property-decorator';
 import placeModel from '@/models/PlaceModel';
 import imageModel from '@/models/ImageModel';
 import api from '@/store/api';
-import {NCard, NCarousel, NGrid, NGridItem, NButton, NDrawer} from "naive-ui";
+import {NCard, NCarousel, NButton, NDrawer} from "naive-ui";
 
 @Options({
   components: {
-    NCarousel, NCard, NGrid, NGridItem, NButton, NDrawer
+    NCarousel, NCard, NButton, NDrawer
   },
 })
 export default class PlaceComponent extends Vue{
