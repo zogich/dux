@@ -2,7 +2,8 @@
   <div v-bind:style='{textAlign: this.styleObject.map_layout_text_align}'>
     <n-button @click="show_drawer" v-bind:style="{marginTop: this.styleObject.drawer_button_margin_top,
     borderRadius: this.styleObject.drawer_button_border_radius,
-    marginLeft: this.styleObject.drawer_button_margin_left
+    marginLeft: this.styleObject.drawer_button_margin_left,
+    marginBottom: this.styleObject.drawer_button_margin_bottom,
     }" class="info-button">
       Описание
     </n-button>
@@ -64,6 +65,7 @@ export default class PlaceComponent extends Vue{
       drawer_button_margin_top: '40vh',
       drawer_button_border_radius: '0px 25px 25px 0px',
       drawer_button_margin_left: '0',
+      drawer_button_margin_bottom: '0',
     }
 
     async created(){
@@ -98,6 +100,7 @@ export default class PlaceComponent extends Vue{
           this.styleObject.drawer_button_margin_top = '80vh';
           this.styleObject.drawer_button_border_radius = '25px 25px 25px 25px';
           this.styleObject.drawer_button_margin_left = '-39.5px';
+          this.styleObject.drawer_button_margin_bottom = '40px';
       }
       else {
         this.styleObject.drawer_placement = 'left';
@@ -105,6 +108,7 @@ export default class PlaceComponent extends Vue{
         this.styleObject.drawer_button_margin_top = '40vh';
         this.styleObject.drawer_button_border_radius = '0px 25px 25px 0px';
         this.styleObject.drawer_button_margin_left = '0px';
+        this.styleObject.drawer_button_margin_bottom = '0px';
       }
     }
 }
