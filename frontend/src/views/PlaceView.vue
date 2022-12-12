@@ -1,6 +1,9 @@
 <template>
   <div v-bind:style='{textAlign: this.styleObject.map_layout_text_align}'>
-    <n-button @click="show_drawer" v-bind:style="{marginTop: this.styleObject.drawer_button_margin_top}" class="info-button">
+    <n-button @click="show_drawer" v-bind:style="{marginTop: this.styleObject.drawer_button_margin_top,
+    borderRadius: this.styleObject.drawer_button_border_radius,
+    marginLeft: this.styleObject.drawer_button_margin_left
+    }" class="info-button">
       Описание
     </n-button>
   <GMapMap
@@ -55,11 +58,12 @@ export default class PlaceComponent extends Vue{
     place: placeModel = {id: -1, name:'', description:'', type: 0, latitude: 0, longitude: 0}
     images: imageModel[] = [];
     active = false
-    isScreelLess950px = false
     styleObject = {
       drawer_placement: 'left',
       map_layout_text_align: 'left',
       drawer_button_margin_top: '40vh',
+      drawer_button_border_radius: '0px 25px 25px 0px',
+      drawer_button_margin_left: '0',
     }
 
     async created(){
@@ -89,16 +93,18 @@ export default class PlaceComponent extends Vue{
 
     handleResizeWindow(){
       if ( window.innerWidth < 950 ){
-          this.styleObject.drawer_placement = 'bottom'
-          this.isScreelLess950px = true;
+          this.styleObject.drawer_placement = 'bottom';
           this.styleObject.map_layout_text_align = 'center';
           this.styleObject.drawer_button_margin_top = '80vh';
+          this.styleObject.drawer_button_border_radius = '25px 25px 25px 25px';
+          this.styleObject.drawer_button_margin_left = '-39.5px';
       }
       else {
-        this.styleObject.drawer_placement = 'left'
-        this.isScreelLess950px = false;
+        this.styleObject.drawer_placement = 'left';
         this.styleObject.map_layout_text_align = 'left';
-        this.styleObject.drawer_button_margin_top = '40vh'
+        this.styleObject.drawer_button_margin_top = '40vh';
+        this.styleObject.drawer_button_border_radius = '0px 25px 25px 0px';
+        this.styleObject.drawer_button_margin_left = '0px';
       }
     }
 }
@@ -141,7 +147,6 @@ export default class PlaceComponent extends Vue{
 
 .info-button{
   background: rgba(0, 0, 0, 0.3);
-  border-radius: 0px 25px 25px 0px;
   position: absolute;
   z-index: 100;
 }
