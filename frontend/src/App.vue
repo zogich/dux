@@ -22,7 +22,11 @@
       </n-space>
     </n-layout-header>
     <n-layout-content>
-        <router-view/>
+        <router-view v-slot="{ Component }">
+          <transition name="tron" mode="out-in">
+            <component :is="Component"/>
+          </transition>
+        </router-view>
     </n-layout-content>
       <n-layout-footer bordered>
         <n-space vertical style="gap: 3px" justify='space-evenly' align="start">
@@ -131,4 +135,15 @@ a{
 a:visited{
     color: #70c0e8;
 }
+
+.tron-enter-active,
+ tron-leave-active{
+  transition: 1s ease all;
+ }
+
+.tron-enter-from,
+ tron-leave-to{
+  opacity: 0;
+  transform: translateX(100px);
+ }
 </style>
