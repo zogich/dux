@@ -3,8 +3,7 @@
             vertical
             justify="center"
             align="center">
-      <h1>DUX City Guide</h1>
-      <h2>Путеводитель для иногородних студентов</h2>
+      <h1>Путеводитель для иногородних студентов<br> по Владивостоку</h1>
       <n-button @click="start" size="large" dashed type="primary">
         Начать
       </n-button>
@@ -30,7 +29,7 @@ export default class Home extends Vue {
 <style scoped>
   h1{
     margin: 0;
-    font-size: 80px;
+    font-size: 35px;
     font-weight: 500;
   }
   h2{
