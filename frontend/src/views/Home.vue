@@ -4,7 +4,7 @@
             justify="center"
             align="center">
       <h1>DUX City Guide</h1>
-      <h2>Лучший путеводитель по Владивостоку</h2>
+      <h2>Путеводитель для иногородних студентов</h2>
       <n-button @click="start" size="large" dashed type="primary">
         Начать
       </n-button>
