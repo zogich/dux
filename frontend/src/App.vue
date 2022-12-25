@@ -8,6 +8,9 @@
 
           <n-button text><router-link to="/">Home</router-link></n-button>
           <n-button text><router-link to="/menu">Menu</router-link></n-button>
+          <n-button text><a href="https://vk.com/doc269075898_653912565?hash=eJBZM9u8q0bAK38hrvbNjnkOWDZ3diZ1FjOQNg4CT04&dl=K878iuLnkLybwMeANT3cGXXDlpqHxoBjlhQw46E7B5T">
+            Брошюра
+          </a></n-button>
         </div>
 
 
